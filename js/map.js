@@ -9,12 +9,13 @@ var markerList = [];
 var markerLayer;
 
 var cameraIcon = L.icon({
-    iconUrl: 'kamera_icon.png',
+    iconUrl: 'icons/kamera_icon.png',
 
     iconSize:     [50,48], // size of the icon
     iconAnchor:   [25,25], // point of the icon which will correspond to marker's location
     popupAnchor:  [15,15] // point from which the popup should open relative to the iconAnchor
 });
+
 
 function processJSON(data){
 
