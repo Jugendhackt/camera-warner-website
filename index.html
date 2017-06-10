@@ -9,15 +9,19 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="leaflet/lib/leaflet.css"/>
+    <script src="leaflet/lib/leaflet.js"></script>
+    <link rel="stylesheet" href="css/map.css"/>
   </head>
-  <body style="padding-top: 70px;">
+  <body style="padding-top: 100px;">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,9 +43,19 @@
        </div><!-- /.container-fluid -->
     </nav>
 
+    <div class="row">
+      <div class="col-md-2 col-sm-2"></div>
+      <div class="col-md-8 col-sm-8">
+        <h1>Camera Map</h1>
+        <div id="mapid"></div>
+        <script src="js/map.js"></script>
+      </div>
+      <div class="col-md-2 col-sm 2"></div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
   </body>
 </html>
