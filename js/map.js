@@ -12,9 +12,13 @@ function processJSON(data){
     console.log(e);
   }
 }
+function markCameraPosition(){
+  var bounds = mymap.getBounds()
+  $.get("https://overpass-api.de/api/interpreter?data=[out:json];node[man_made=surveillance]("+ bounds.getSouthWest().lat + ","
+                                                                                              + bounds.getSouthWest().lng + ","
+                                                                                              + bounds.getNorthEast().lat + ","
+                                                                                              + bounds.getNorthEast().lng +");out;",processJSON);
+}
 
-var bounds = mymap.getBounds()
-$.get("https://overpass-api.de/api/interpreter?data=[out:json];node[man_made=surveillance]("+ bounds.getSouthWest().lat + ","
-                                                                                            + bounds.getSouthWest().lng + ","
-                                                                                            + bounds.getNorthEast().lat + ","
-                                                                                            + bounds.getNorthEast().lng +");out;",processJSON);
+markCameraPosition();
+mymap.on("moveend",markCameraPosition);
