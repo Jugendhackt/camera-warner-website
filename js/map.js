@@ -15,7 +15,13 @@ var cameraIcon = L.icon({
     iconAnchor:   [25,25], // point of the icon which will correspond to marker's location
     popupAnchor:  [15,15] // point from which the popup should open relative to the iconAnchor
 });
+var camera_warningIcon = L.icon({
+    iconUrl: 'icons/kamera_warning_icon.png',
 
+    iconSize:     [33,33], // size of the icon
+    iconAnchor:   [25,25], // point of the icon which will correspond to marker's location
+    popupAnchor:  [25,25] // point from which the popup should open relative to the iconAnchor
+});
 
 function processJSON(data){
 
@@ -23,7 +29,7 @@ function processJSON(data){
   markerList = [];
   for(var i = 0; i<data.elements.length;i++) {
     e = data.elements[i];
-    markerList.push(L.marker([e.lat,e.lon],{icon: cameraIcon}));
+    markerList.push(L.marker([e.lat,e.lon],{icon: camera_warningIcon}));
   }
   // prevent adding markers multiple times
   if (markerLayer != undefined){
