@@ -4,6 +4,8 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
 
+var mapUpdateTimeOut;
+
 function processJSON(data){
   var e;
   for(var i = 0; i<data.elements.length;i++) {
@@ -19,6 +21,9 @@ function markCameraPosition(){
                                                                                               + bounds.getNorthEast().lat + ","
                                                                                               + bounds.getNorthEast().lng +");out;",processJSON);
 }
-
+function onMoveEnd() {
+  clearTimeout(mapUpdateTimeOut);
+  mapUpdateTimeOut = setTimeout(markCameraPosition, 1500);
+}
 markCameraPosition();
-mymap.on("moveend",markCameraPosition);
+mymap.on("moveend",onMoveEnd);
