@@ -5,14 +5,23 @@ attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contri
 }).addTo(mymap);
 
 var mapUpdateTimeOut;
+var markerList = [];
+var markerLayer;
 
 function processJSON(data){
+
   var e;
+  markerList = [];
   for(var i = 0; i<data.elements.length;i++) {
     e = data.elements[i];
-    L.marker([e.lat,e.lon]).addTo(mymap);
-    console.log(e);
+    markerList.push(L.marker([e.lat,e.lon]));
   }
+  // prevent adding markers multiple times
+  if (markerLayer != undefined){
+    markerLayer.clearLayers();
+  }
+  markerLayer = L.layerGroup(markerList);
+  markerLayer.addTo(mymap);
 }
 function markCameraPosition(){
   if(mymap.getZoom()<14){
