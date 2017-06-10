@@ -15,6 +15,9 @@ function processJSON(data){
   }
 }
 function markCameraPosition(){
+  if(mymap.getZoom()<14){
+    return false;
+  }
   var bounds = mymap.getBounds()
   $.get("https://overpass-api.de/api/interpreter?data=[out:json];node[man_made=surveillance]("+ bounds.getSouthWest().lat + ","
                                                                                               + bounds.getSouthWest().lng + ","
@@ -23,7 +26,7 @@ function markCameraPosition(){
 }
 function onMoveEnd() {
   clearTimeout(mapUpdateTimeOut);
-  mapUpdateTimeOut = setTimeout(markCameraPosition, 1500);
+  mapUpdateTimeOut = setTimeout(markCameraPosition, 2000);
 }
 markCameraPosition();
 mymap.on("moveend",onMoveEnd);
