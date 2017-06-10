@@ -1,3 +1,14 @@
 #mapid {
   height: 500px;
 }
+
+.center-container {
+  max-width: 888px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+body {
+  padding-top: 75px;
+  padding-bottom: 20px;
+}
