@@ -3,3 +3,18 @@ var mymap = L.map('mapid').setView([53.56253, 9.9598], 17);
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
+
+function processJSON(data){
+  var e;
+  for(var i = 0; i<data.elements.length;i++) {
+    e = data.elements[i];
+    L.marker([e.lat,e.lon]).addTo(mymap);
+    console.log(e);
+  }
+}
+
+var bounds = mymap.getBounds()
+$.get("https://overpass-api.de/api/interpreter?data=[out:json];node[man_made=surveillance]("+ bounds.getSouthWest().lat + ","
+                                                                                            + bounds.getSouthWest().lng + ","
+                                                                                            + bounds.getNorthEast().lat + ","
+                                                                                            + bounds.getNorthEast().lng +");out;",processJSON);
