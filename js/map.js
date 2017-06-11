@@ -26,13 +26,13 @@ var camera_warningIcon = L.icon({
 var alpakaIcon = L.icon({
     iconUrl: 'icons/alpaka.png',
 
-    iconSize:     [70,70], // size of the icon
-    iconAnchor:   [35,42], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0,-30] // point from which the popup should open relative to the iconAnchor
+    iconSize:     [35,35], // size of the icon
+    iconAnchor:   [17,21], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0,-15] // point from which the popup should open relative to the iconAnchor
 });
 
 var alpaka = L.marker([53.56249,9.95990],{icon: alpakaIcon}).addTo(mymap);
-alpaka.bindPopup("Jugend hackt Hamburg 2017")
+alpaka.bindPopup("Jugend hackt Hamburg 2017").openPopup();
 function processJSON(data){
 
   var e;
